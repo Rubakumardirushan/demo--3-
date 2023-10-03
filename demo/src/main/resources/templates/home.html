@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    
+    <p>Username: <span th:text="${username}"></span>!</p>
+    <p>Email: <span th:text="${email}"></span></p>
+    <p>Name: <span th:text="${username}"></span></p>
+    <p>Contact Number: <span th:text="${contact}"></span></p>
+    <p>Country: <span th:text="${location}"></span></p>
+
+    <!-- Logout link -->
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+        <a href="http://localhost:8080/register">gow</a>
+    </form>
+</body>
+</html>
