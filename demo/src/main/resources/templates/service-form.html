@@ -75,7 +75,7 @@
                 const inputValue = input.value;
                 if (containsHtmlOrScriptTags(inputValue)) {
                     alert("HTML or script tags are not allowed in input fields.");
-                    input.value = ""; // Clear the input field
+                    input.value = ""; 
                 }
             });
         }
@@ -89,8 +89,7 @@
             const form = document.querySelector("form");
             form.addEventListener("submit", function(event) {
                 checkInputFields();
-                // Continue with the form submission if needed
-                // event.preventDefault(); // Uncomment this line to prevent the form from submitting
+            
             });
         });
     </script>
