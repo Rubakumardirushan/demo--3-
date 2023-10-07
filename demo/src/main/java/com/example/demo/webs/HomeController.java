@@ -43,8 +43,8 @@ public class HomeController {
     @GetMapping("/")
     public String securedHome(@AuthenticationPrincipal OAuth2User user, Model model, Authentication authentication) {
         if (user != null) {
-            String username = user.getAttribute("name"); // GitHub username
-            String email = user.getAttribute("email"); // GitHub user's email
+            String username = user.getAttribute("name"); 
+            String email = user.getAttribute("email"); 
             String location = user.getAttribute("location"); 
             String name = user.getAttribute("given_name"); 
              String contact = user.getAttribute("contact_number"); 
@@ -57,7 +57,7 @@ public class HomeController {
 if(contact==null){
     contact="null";
 }
-            // Add more attributes as needed from the GitHub user object
+            
             model.addAttribute("username", username);
             model.addAttribute("email", email);
             model.addAttribute("location", location);
@@ -67,15 +67,15 @@ if(contact==null){
                 model.addAttribute("picture", pic);
             return "home"; // Return the view name
         } else {
-            // Handle the case where user is null, possibly by redirecting to an error page or login page.
+            
             return "redirect:/login";
         }
     }
     @PostMapping("/delete")
     public String deleteService(@RequestParam("id") Long id) {
-        // Assuming your repository method for deleting by bookingId is called "deleteByBookingId"
+       
         vehicleServiceRepository.deleteById(id);
-        return "redirect:/services";// Redirect back to the service list page
+        return "redirect:/services";
     }
  @GetMapping("/service-list")
  public String diru(){
@@ -83,7 +83,7 @@ if(contact==null){
  }
   @GetMapping("/insert")
   public String showInsertForm() {
-      return "insert"; // Return the HTML form page
+      return "insert"; 
   }
 
  
