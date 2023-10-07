@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Service</title>
+    
+        <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007BFF;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+    
+    <script>
+        function checkInputFields() {
+            const inputFields = document.querySelectorAll("input[type='text'], input[type='number'], textarea");
+            
+            inputFields.forEach(function(input) {
+                const inputValue = input.value;
+                if (containsHtmlOrScriptTags(inputValue)) {
+                    alert("HTML or script tags are not allowed in input fields.");
+                    input.value = ""; // Clear the input field
+                }
+            });
+        }
+
+        function containsHtmlOrScriptTags(text) {
+            const regex = /<[^>]*>|<\/[^>]*>|<script[^>]*>|<\/script>/gi;
+            return regex.test(text);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                checkInputFields();
+                // Continue with the form submission if needed
+                // event.preventDefault(); // Uncomment this line to prevent the form from submitting
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Add Service</h1>
+    <form th:action="@{/logs}" th:object="${service}" method="post">
+        <label>Date: <input type="date" th:field="*{date}" required /></label><br />
+        <label>Time: <input type="time" th:field="*{time}" required/></label><br />
+        <label for="location">Location:</label>
+        <select id="location" name="location" th:field="*{location}">
+            <option value="Colombo">Colombo</option>
+            <option value="Gampaha">Gampaha</option>
+            <option value="Kalutara">Kalutara</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Matale">Matale</option>
+            <option value="Nuwara Eliya">Nuwara Eliya</option>
+            <option value="Galle">Galle</option>
+            <option value="Matara">Matara</option>
+            <option value="Hambantota">Hambantota</option>
+            <option value="Jaffna">Jaffna</option>
+            <option value="Kilinochchi">Kilinochchi</option>
+            <option value="Mannar">Mannar</option>
+            <option value="Vavuniya">Vavuniya</option>
+            <option value="Mullaitivu">Mullaitivu</option>
+            <option value="Batticaloa">Batticaloa</option>
+            <option value="Ampara">Ampara</option>
+            <option value="Trincomalee">Trincomalee</option>
+            <option value="Kurunegala">Kurunegala</option>
+            <option value="Puttalam">Puttalam</option>
+            <option value="Anuradhapura">Anuradhapura</option>
+            <option value="Polonnaruwa">Polonnaruwa</option>
+            <option value="Badulla">Badulla</option>
+            <option value="Moneragala">Moneragala</option>
+            <option value="Ratnapura">Ratnapura</option>
+            <option value="Kegalle">Kegalle</option>
+        </select><br/>
+        
+        <label>Vehicle No: <input type="text" th:field="*{vehicleNo}" required/></label><br />
+        <label>Mileage: <input type="number" th:field="*{mileage}" required/></label><br />
+        <label>Message: <input type="text" th:field="*{message}" required/></label><br />
+        <label style="display: none;">Username: <input type="text" th:field="${username}" /></label><br />
+        <input type="hidden" name="username" th:value="${username}" />
+        
+        <button type="submit">Add Service</button>
+    </form>
+
+</body>
+</html>

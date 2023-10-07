@@ -1,21 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Center content vertically on the page */
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        img.profile-pic {
+            width: 100px; /* Set the desired width */
+            height: 100px; /* Set the desired height */
+            display: block;
+            margin: 20px auto;
+            border-radius: 50%; /* Rounded profile picture */
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        a {
+            
+            color: white;
+            font-weight: bold; /* Make links bold */
+            background-color: #4CAF50;
+            font-size: 25px; /* Increase the font size for links */
+            margin: 30px;
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        .cover-box {
+            background-color: white;
+            border: 5px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            width: 50%; /* Adjust the width as needed */
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            float: right; /* Float the button to the right corner */
+            margin-top: -80px; /* Adjust the margin to align with the top right corner */
+            margin-left: 1400px;
+            
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Home Page</h1>
-    
-    <p>Username: <span th:text="${username}"></span>!</p>
-    <p>Email: <span th:text="${email}"></span></p>
-    <p>Name: <span th:text="${username}"></span></p>
-    <p>Contact Number: <span th:text="${contact}"></span></p>
-    <p>Country: <span th:text="${location}"></span></p>
-
-    <!-- Logout link -->
+    <h1>Hello <span th:text="${name}"></span>! Welcome to ABC vehicle service reservation</h1>
     <form th:action="@{/logout}" method="post">
         <button type="submit">Logout</button>
-        <a href="http://localhost:8080/register">gow</a>
     </form>
+
+    <div class="cover-box">
+        <h2>Profile</h2>
+        <img class="profile-pic" th:src="${picture}" alt="Profile Picture" />
+        <p>Username: <b><span th:text="${username}"></span></b></p>
+        <p>Email: <b><span th:text="${email}"></span></b></p>
+        <p>Name: <b><span th:text="${name}"></span></b></p>
+        <p>Contact Number: <b><span th:text="${contact_number}"></span></b></p>
+        <p>Country: <b><span th:text="${location}"></span></b></p>
+    </div>
+
+    
+    <a href="http://localhost:8080/services1">View all vehicle service reservation information</a>
+    <a href="http://localhost:8080/services">Your vehicle service reservation information</a>
 </body>
 </html>
