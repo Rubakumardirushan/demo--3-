@@ -100,7 +100,7 @@ if(contact==null){
   
 
 
-@GetMapping("/services1")
+@GetMapping("/info")
   @PreAuthorize("hasAuthority('SCOPE_openid') and hasAuthority('SCOPE_https://www.googleapis.com/auth/userinfo.email')")
   public String listServices1(Model model) {
     
@@ -136,22 +136,33 @@ if(contact==null){
     public RedirectView redirectToHomePage() {
         return new RedirectView("/");
     }
-    @RequestMapping("/services1/**")
+    @RequestMapping("/info/**")
     public RedirectView redirectToServices1() {
-        return new RedirectView("/services1");
+        return new RedirectView("/info");
     }
 
     @RequestMapping("/services/**")
     public RedirectView redirectToServices() {
         return new RedirectView("/services");
     }
-@RequestMapping("/services1**")
+@RequestMapping("/info**")
     public RedirectView redirectToServices11() {
-        return new RedirectView("/services1");
+        return new RedirectView("/info");
     }
  @RequestMapping("/services**")
     public RedirectView redirectToServices12() {
         return new RedirectView("/services");
     }
+    @RequestMapping("/add**")
+    public RedirectView redirectToregisterpage() {
+        return new RedirectView("/add");
+    }
+     @RequestMapping("/add/**")
+    public RedirectView redirectToregisterpage1() {
+        return new RedirectView("/add");
+    }
+
+
+
   
 }
