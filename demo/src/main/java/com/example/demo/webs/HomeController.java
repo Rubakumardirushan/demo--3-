@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -130,10 +132,19 @@ if(contact==null){
 
 
  /* */
-   
+   @GetMapping("/**")
+    public RedirectView redirectToHomePage() {
+        return new RedirectView("/");
+    }
+    @RequestMapping("/services1/**")
+    public RedirectView redirectToServices1() {
+        return new RedirectView("/services1");
+    }
 
-
-
+    @RequestMapping("/services/**")
+    public RedirectView redirectToServices() {
+        return new RedirectView("/services");
+    }
 
   
 }
