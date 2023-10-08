@@ -145,6 +145,13 @@ if(contact==null){
     public RedirectView redirectToServices() {
         return new RedirectView("/services");
     }
-
+@RequestMapping("/services1**")
+    public RedirectView redirectToServices11() {
+        return new RedirectView("/services1");
+    }
+ @RequestMapping("/services**")
+    public RedirectView redirectToServices12() {
+        return new RedirectView("/services");
+    }
   
 }
