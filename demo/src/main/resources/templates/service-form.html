@@ -71,32 +71,41 @@
 </style>
 
     
-    <script>
-        function checkInputFields() {
-            const inputFields = document.querySelectorAll("input[type='text'], input[type='number'], textarea");
-            
-            inputFields.forEach(function(input) {
-                const inputValue = input.value;
-                if (containsHtmlOrScriptTags(inputValue)) {
-                    alert("HTML or script tags are not allowed in input fields.");
-                    input.value = ""; 
-                }
-            });
-        }
+<script>
+    function checkInputFields() {
+        const inputFields = document.querySelectorAll("input[type='text'], input[type='number'], textarea");
 
-        function containsHtmlOrScriptTags(text) {
-            const regex = /<[^>]*>|<\/[^>]*>|<script[^>]*>|<\/script>/gi;
-            return regex.test(text);
-        }
+        let invalidInput = false;
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.querySelector("form");
-            form.addEventListener("submit", function(event) {
-                checkInputFields();
-            
-            });
+        inputFields.forEach(function (input) {
+            const inputValue = input.value.trim(); // Trim whitespace
+
+            if (containsHtmlOrScriptTags(inputValue)) {
+                alert("HTML or script tags are not allowed in input fields.");
+                input.value = "";
+                invalidInput = true;
+            }
         });
-    </script>
+
+        return !invalidInput; // Return true if all inputs are valid
+    }
+
+    function containsHtmlOrScriptTags(text) {
+        const regex = /<[^>]*>|<\/[^>]*>|<script[^>]*>|<\/script>/gi;
+        return regex.test(text);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            if (!checkInputFields()) {
+                event.preventDefault(); // Prevent form submission if there are invalid inputs
+                alert("Please fill in the required fields.");
+            }
+        });
+    });
+</script>
+
 </head>
 <body>
     <h1>Add Service</h1>
