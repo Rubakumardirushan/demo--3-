@@ -1,8 +1,8 @@
 package com.example.demo.webs;
 
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 
 
 
@@ -13,16 +13,16 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.sql.Date;
-import java.sql.Time;
+//import java.sql.Date;
+//import java.sql.Time;
 import java.util.List;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -136,6 +136,9 @@ if(contact==null){
     public RedirectView redirectToHomePage() {
         return new RedirectView("/");
     }
+
+
+    
     @RequestMapping("/info/**")
     public RedirectView redirectToServices1() {
         return new RedirectView("/info");
