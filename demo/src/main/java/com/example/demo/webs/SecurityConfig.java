@@ -23,11 +23,13 @@ public class SecurityConfig {
                 .requestMatchers("/error").permitAll() 
                     .requestMatchers("/").permitAll() // Allow access to /login for all
                     .anyRequest().authenticated(); // Require authentication for other URLs
+                    
+                    
             })
-            .oauth2Login(withDefaults()); // Configure OAuth2 login
+           .oauth2Login(withDefaults()); // Configure OAuth2 login
 
         // Handle access denied by redirecting to the home page
-        https
+         https
             .exceptionHandling()
             .accessDeniedHandler((request, response, accessDeniedException) -> response.sendRedirect("/"));
 

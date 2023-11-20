@@ -132,11 +132,11 @@ if(contact==null){
 
 
  /* */
-   @GetMapping("/**")
+   /*@GetMapping("/**")
     public RedirectView redirectToHomePage() {
         return new RedirectView("/");
     }
-
+*/
 
     
     @RequestMapping("/info/**")
@@ -164,7 +164,7 @@ if(contact==null){
     public RedirectView redirectToregisterpage1() {
         return new RedirectView("/add");
     }
-
+    
 
 
   
